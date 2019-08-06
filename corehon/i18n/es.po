@@ -1,0 +1,66 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * corecash
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-17 14:58+0000\n"
+"PO-Revision-Date: 2019-06-17 14:58+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: corecash
+#: model_terms:ir.ui.view,arch_db:corecash.layout_invoice
+msgid "#RUC:"
+msgstr "#RUC:"
+
+#. module: corecash
+#: model_terms:ir.ui.view,arch_db:corecash.layout_invoice
+msgid "<br/>Nro de Aprobación: ASFC 03/0006/01/2019/0<br/><br/>"
+msgstr "<br/>Nro de Aprobación: ASFC 03/0006/01/2019/0<br/><br/>"
+
+#. module: corecash
+#: model_terms:ir.ui.view,arch_db:corecash.layout_invoice
+msgid "<span>Tel:</span>"
+msgstr "<span>Tel:</span>"
+
+#. module: corecash
+#: model:ir.actions.report,name:corecash.cc_report_creditnote
+msgid "Credit Note CORECA Format"
+msgstr "Formato Nota de Crédito CORECA"
+
+#. module: corecash
+#: model_terms:ir.ui.view,arch_db:corecash.layout_creditnote
+msgid "INVOICE:"
+msgstr "FACTURA:"
+
+#. module: corecash
+#: model:ir.model,name:corecash.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: corecash
+#: model:ir.actions.report,name:corecash.cc_report_invoice
+msgid "Invoice CORECA Format"
+msgstr "Formato Factura CORECA"
+
+#. module: corecash
+#: model_terms:ir.ui.view,arch_db:corecash.layout_creditnote
+msgid "RETURN"
+msgstr "DEVOLUCIÓN"
+
+#. module: corecash
+#: model:ir.model.fields,help:corecash.field_account_invoice__warehouse_id
+msgid "The warehouse related with delivery of products in customer invoices"
+msgstr "El almacén relacionado con la entrega de productos en las facturas de los clientes"
+
+#. module: corecash
+#: model:ir.model.fields,field_description:corecash.field_account_invoice__warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"

@@ -1,0 +1,91 @@
+<<?xml version="1.0"?>
+<t t-name="corecash.layout_creditnote">
+        <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" class="page article">
+            <table style="width:63%;height:90px;font-size:small;">
+                 <colgroup>
+                    <col width="8%"/>
+                    <col width="8%"/>
+                    <col width="15%"/>
+                    <col width="15%"/>
+                    <col width="25%"/>
+                    <col width="23%"/>
+                </colgroup>
+            <tr/>
+            <tr style="text-align:center;font-weight:bold;"><td/>
+                <t t-if="o.date_invoice"><br/><br/>
+                    <t t-set="date_split" t-value="o.split_date_invoice()"/>
+                    <td style="padding-top:5px;padding-bottom:5px;"><t t-esc="date_split[0]"/></td>
+                    <td style="padding-top:5px;padding-bottom:5px;"><t t-esc="date_split[1]"/></td>
+                    <td style="padding-top:5px;padding-bottom:5px;"><t t-esc="date_split[2]"/></td>
+                    <td style="padding-bottom:5px;" colspan="2"/>
+                </t>
+                <t t-else="">
+                    <td style="padding-bottom:5px;" colspan="5"/>
+                </t>
+            </tr>
+            <tr><td style="padding-bottom:5px;" colspan="2"/>
+                <td style="padding-bottom:5px;" colspan="3">
+                    <b><t t-esc="o.partner_id.name"/></b>
+                </td>
+                <td style="font-size:x-small;vertical-align:sub" colspan="2"><b></b></td>
+            </tr>
+            <tr><td style="padding-bottom:5px;" colspan="2"/>
+                <td style="text-align:left;padding-bottom:5px;" colspan="4">
+                    <b><t t-esc="o.partner_id.ref"/></b>
+                </td>
+            </tr>
+            <tr><td style="padding-bottom:5px;" colspan="2"/>
+                <td style="text-align:left;padding-bottom:5px;" colspan="4">
+                    <b><t t-esc="o.partner_id.city"/></b>
+                </td>
+            </tr>
+            <tr><td style="padding-bottom:15px;" colspan="6"/>
+            </tr>
+            </table>
+            <table id="products_lines" cellspacing="0px" cellpadding="0px" style="width:60%;padding:0px">
+            <colgroup>
+                        <col width="5%" height="20px"/>
+                        <col width="90%" height="20px"/>
+                        <col width="5%" height="20px"/>
+                    </colgroup>
+            <tr><td colspan="2" style="vertical-align:top;height:86px;padding:0px;">
+                <table id="products_lines" style="width:100%;vertical-align:top;font-size:small">
+                    <colgroup>
+                        <col width="5%" height="20px"/>
+                        <col width="90%" height="20px"/>
+                        <col width="5%" height="20px"/>
+                    </colgroup>
+                    <tbody style="font-size:small;vertical-align:top">
+                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                        <tr style="vertical-align:top">
+                            <td/>
+                            <td style="text-align:left;padding-bottom:2px;padding-bottom:1px;">
+                                RETURN <t t-esc="line.quantity"/> <t t-esc="line.product_id.name if line.product_id else line.name"/>
+                            </td>
+                        </tr>
+                    </t>
+                    <tr style="vertical-align:top">
+                            <td/>
+                            <td style="text-align:left;padding-bottom:2px;padding-bottom:1px;">
+                            INVOICE: <t t-esc="o.origin"/>
+                            </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td></tr>
+            <tr>
+                <td/>
+                <td style="text-align:right;font-weight:bold;padding:0px;">
+                    <t t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                </td>
+                <td/>
+            </tr>
+            </table>
+            <div class="footer" style="width=100%; color:#adadad;">
+                <t t-if="report_type == 'pdf'">
+                </t>
+            </div>
+        </div>
+    </t>
+    </template>
+</odoo>
