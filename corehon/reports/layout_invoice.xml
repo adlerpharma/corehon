@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<t t-name="corecash.layout_invoice">
+<t t-name="corehon.layout_invoice">
         <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" class="page article">
             <table style="width:100%;height:90px;font-size:x-small;">
                  <colgroup>
