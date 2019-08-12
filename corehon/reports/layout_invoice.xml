@@ -1,5 +1,6 @@
-<?xml version="1.0"?>
-<t t-name="corehon.layout_invoice">
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="layout_invoice">
         <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" class="page article">
             <table style="width:100%;height:90px;font-size:x-small;">
                  <colgroup>
