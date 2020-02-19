@@ -8,15 +8,15 @@
                     <col width="45%"/>
                 </colgroup>
             <tr><td class="align-top">
-            <table id="invoice_client_data" style="width:100%; text-align:left; font-size:x-small" class="uppercase">
+            <table id="invoice_client_data" style="width:100%; text-align:right; font-size:x-small" class="uppercase">
                 <tr>
                     <td class="set-value-left" style="padding-top:3px">
                         <br/><b><t t-esc="o.partner_id.name"/></b><br/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="set-value-left">
-                        <b>#RUC: <t t-esc="o.partner_id.vat"/></b><br/>
+                    <td class="text-align:right">
+                        
                     </td>
                 </tr>
                 <tr>
@@ -46,11 +46,20 @@
             <td class="align-top">
                 <table style="width:100%;font-size:x-small;">
                     <tr><td style="text-align:right">
-                <b><t t-esc="o.number"/></b>
-                </td></tr>
-                <tr><td style="text-align:left">
-                <b><t t-esc="o.comment"/></b>
-                </td></tr>
+                        <b><t t-esc="o.date_invoice.day"/></b>
+                        <b><t t-esc="o.date_invoice.month"/></b>
+                        <b><t t-esc="o.date_invoice.year"/></b>
+                    </td></tr>
+                </table>
+            </td>
+                <td class="align-top" style="padding-top:3px">
+                <table style="width:100%;font-size:x-small;">
+                    <tr><td style="text-align:center">
+                        <b><br/><t t-esc="o.partner_id.vat"/></b>
+                    </td></tr>
+                    <tr><td style="text-align:left">
+                        <b><t t-esc="o.comment"/></b>
+                    </td></tr>
                 </table>
             </td></tr>
             </table>
@@ -190,5 +199,6 @@
                 </t>
             </div>
         </div>
+    </t>
     </template>
 </odoo>
