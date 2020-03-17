@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <template id="layout_invoice">
-        <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" class="page article">
+           <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" class="page article">
             <table style="width:100%;height:90px;font-size:x-small;">
                  <colgroup>
                     <col width="55%"/>
@@ -10,21 +10,25 @@
             <tr><td class="align-top">
             <table id="invoice_client_data" style="width:100%; text-align:center; font-size:x-small" class="uppercase">
                 <tr>
-                    <td class="set-value-left" style="padding-top:3px">
+                    <td class="set-value-right" style="padding-top:3px;padding-right:10px">
                         <br/><b><t t-esc="o.partner_id.name"/></b><br/>
                     </td>
                 </tr>
             </table>
             </td>
             <td class="align-top">
-                <table style="width:100%;font-size:x-small;">
-                    <tr><td style="text-align:right">
+                <table style="width:100%;font-size:x-small;padding-right:20px">
+                <tr><td style="text-align:right;padding-right:20px">
                         <b><t t-esc="o.date_invoice.day"/></b>
+                    </td>
+                    <td style="text-align:center">
                         <b><t t-esc="o.date_invoice.month"/></b>
+                    </td>
+                    <td style="text-align:right">
                         <b><t t-esc="o.date_invoice.year"/></b>
-                    </td></tr>
+                </td></tr>
                 <td class="align-top">
-                    <tr><td style="text-align:center">
+                    <tr><td style="text-align:right;padding-right:20px">
                         <b><t t-esc="o.partner_id.barcode"/></b><br/>
                         <b><t t-esc="o.partner_id.vat"/></b><br/>
                         <b>
@@ -85,39 +89,51 @@
                     </tr>
                 </tbody>
             </table>
-                <table id="products_header" style="width:100%">
+            <table style="width:100%">
                 <colgroup>
-                    <col width="15%"/>
-                    <col width="8%"/>
-                    <col width="8%"/>
-                    <col width="12%"/>
-                    <col width="14%"/>
-                    <col width="14%"/>
-                    <col width="10%"/>
-                    <col width="16%"/>
-                    <col width="1%"/>
+                    <col width="20%"/>
+                    <col width="80%"/>
                 </colgroup>
-                <tbody style="font-size:x-small">
-                <tr>
+                <td style="text-align:left;padding-left:50px">
+                    <t t-if="o.payment_term_id.name == 'Contado'">
+                                <b><span> X </span></b>
+                                
+                             </t>
+                     <t t-if="o.payment_term_id.name != 'Contado'">
+                                <b><span> X </span></b>
+                        </t>
+                <td style="text-align:right;font-size:x-small">
+                    <t t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                </td>
+                </td>
+            </table>
+            <table style="width:100%">
+                <colgroup>
+                    <col width="80%"/>
+                    <col width="20%"/>
+                </colgroup>
+                <td style="text-align:left;font-size:x-small;padding-left:50px;padding-top:20px">
                     <t t-set="amount_text" t-value="o.currency_id.amount_to_text(o.amount_total)"/>
                     <t t-set="words" t-value="o.split_amount_text(amount_text, 25)"/>
-                    <td colspan="2"><br/><br/></td>
-                    <td colspan="4" style="text-align:center"><t t-esc="amount_text"/></td>
-                    <td/>
-                    <td class="set-value-right"><t t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/></td>
-                    <td/>
-                </tr>
-                <tr>
-                    <td><br/><br/></td>
-                    <td colspan="2"><t t-esc="o.user_id.name"/></td>
-                    <td><t t-esc="o.date_invoice" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></td>
-                    <td><t t-esc="o.warehouse_id.name"/></td>
+                    <t t-esc="amount_text"/>
+                </td>
+                <td style="text-align:right;font-size:x-small;padding-top:50px">
+                    <t t-esc="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                </td>
+            </table>
+                <table id="products_header" style="width:100%">
+                <colgroup>
+                    <col width="50%"/>
+                    <col width="50%"/>
+                </colgroup>
+                    <!--<td colspan="2"><t t-esc="o.user_id.name"/></td>-->
+                    <td style="text-align:right;font-size:x-small;padding-left:60px;padding-top:30px"><t t-esc="o.date_invoice" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></td>
+                    <td style="text-align:right;font-size:x-small;padding-right:40px"><b><t t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/></b></td>
+                    <!--<td><t t-esc="o.warehouse_id.name"/></td>-->
                     <td style="text-align:center"><t t-esc="o.warehouse_id.code"/></td>
                     <td/>
-                    <td class="set-value-right"> <t t-esc="o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/></td>
                     <td/>
-                </tr>
-                <tr style="text-valign:top">
+                <!--<tr style="text-valign:top">
                     <td colspan="3"><br/></td>
                     <td><br/><t t-esc="o.origin"/></td>
                     <td><br/><t t-esc="o.payment_term_id.name"/></td>
@@ -131,10 +147,9 @@
                         </t>
                     </td>
                     <td/>
-                    <td class="set-value-right"><b><t t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/></b></td>
                     <td/>
-                </tr>
-                <tr>
+                </tr>-->
+               <!-- <tr>
                     <td colspan="5"><br/><br/><br/></td>
                     <td colspan="4" style="font-size:x-small"><br/><br/>Nro de Aprobación DGI: ASFC 03/0006/01/2019/0<br/><br/><br/></td>
                 </tr>
@@ -142,16 +157,15 @@
                     <td colspan="7"/>
                     <td style="text-align:right"><t t-esc="words[0]"/></td>
                     <td/>
-                </tr>
-                <tr>
+                </tr>-->
+                <!--<tr>
                     <td colspan="3"><t t-esc="words[1]"/></td>
                     <td><t t-esc="o.date_due" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></td>
                     <td colspan="5"/>
-                </tr>
+                </tr>-->
                 <tr>
                     <td/>
                 </tr>
-                </tbody>
             </table>
             <div class="footer" style="width=100%; color:#adadad;">
                 <t t-if="report_type == 'pdf'">
